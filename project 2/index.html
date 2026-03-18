@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ремонт квартир под ключ бизнес и премиум класса. Фиксированная смета, гарантия сроков, профессиональные мастера. Выезд инженера и замер бесплатно." />
+  <title>Ремонт квартир под ключ | Премиум ремонт</title>
+  
+  <!-- OpenGraph / Social Media Meta Tags -->
+  <meta property="og:title" content="Ремонт квартир под ключ | Премиум ремонт" />
+  <meta property="og:description" content="Ремонт класса бизнес и премиум с фиксированной сметой и гарантией сроков. Выезд инженера и замер бесплатно." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="hero.webp" />
+
+  <!-- Favicon (Inline SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23f97316'/><text x='50%' y='50%' font-family='sans-serif' font-weight='bold' font-size='40' fill='white' text-anchor='middle' dy='.35em'>RM</text></svg>" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            graphite: '#1f2937',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        sans-serif;
+    }
+
+    /* Плавное приподнимание и мягкое свечение карточек при наведении */
+    .card-hover-glow {
+      transition:
+        transform 200ms ease,
+        box-shadow 200ms ease,
+        background-color 200ms ease,
+        border-color 200ms ease;
+    }
+
+    .card-hover-glow:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 45px rgba(249, 115, 22, 0.22);
+    }
+
+    /* Подсветка иконок шагов при наведении */
+    .step-item {
+      transition: transform 200ms ease;
+    }
+
+    .step-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .step-item:hover .step-icon-circle {
+      box-shadow: 0 14px 30px rgba(249, 115, 22, 0.45);
+      border-color: rgba(249, 115, 22, 0.8);
+    }
+
+    .step-item:hover .step-icon {
+      color: rgb(249, 115, 22);
+    }
+    /* Пульсация для кнопки */
+    @keyframes pulse-soft {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(249, 115, 22, 0);
+      }
+    }
+    .animate-pulse-soft {
+      animation: pulse-soft 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+
+  <!-- ========================================= -->
+  <!-- БЛОК 1: Главный экран (Hero)              -->
+  <!-- ========================================= -->
+  <header class="relative min-h-screen bg-graphite text-white overflow-hidden">
+    <!-- Фоновое изображение главного экрана -->
+    <div class="absolute inset-0">
+      <img
+        src="hero.jpg"
+        alt="Фон: современный интерьер"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <!-- Тёмный оверлей поверх изображения для лучшей читаемости текста -->
+    <div class="absolute inset-0 bg-black/55"></div>
+
+    <!-- Верхняя навигация -->
+    <div class="relative z-10">
+      <div class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-orange-500/90 flex items-center justify-center">
+            <span class="text-xs font-semibold tracking-wide uppercase">RM</span>
+          </div>
+          <span class="text-sm sm:text-base font-semibold tracking-wide uppercase">
+            Премиум ремонт
+          </span>
+        </div>
+        <div class="hidden md:flex items-center gap-6 text-sm text-gray-200">
+          <a href="#tariffs" class="hover:text-white cursor-pointer">Тарифы</a>
+          <a href="#steps" class="hover:text-white cursor-pointer">Этапы</a>
+          <a href="#guarantees" class="hover:text-white cursor-pointer">Гарантии</a>
+          <a href="#projects" class="hidden lg:inline hover:text-white cursor-pointer">Примеры работ</a>
+        </div>
+        <div class="hidden sm:flex items-center gap-3">
+          <span class="text-xs text-gray-300 uppercase tracking-wide">Без предоплаты</span>
+          <a
+            href="#form"
+            class="inline-flex items-center px-4 py-2 rounded-full bg-orange-500 hover:bg-orange-600 transition text-sm font-medium shadow-lg shadow-orange-500/30"
+          >
+            Рассчитать стоимость
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Контент Hero -->
+    <div class="relative z-10 flex items-center min-h-[calc(100vh-4rem)]">
+      <div class="max-w-6xl mx-auto px-4 py-16 lg:py-24">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <p class="text-sm font-medium tracking-[0.2em] uppercase text-gray-300 mb-4">
+              Ремонт класса бизнес и премиум
+            </p>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-6">
+              Ремонт квартир «под ключ»
+              <span class="block text-orange-400">с фиксированной сметой и гарантией сроков</span>
+            </h1>
+            <p class="text-base sm:text-lg text-gray-200 max-w-xl mb-8">
+              Работаем без предоплаты, закрепляем стоимость в договоре и не выходим за рамки
+              согласованного бюджета. Возьмём на себя все заботы — от проекта до финальной уборки.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 sm:items-center justify-start mb-10">
+              <a
+                href="#form"
+                class="inline-flex justify-center items-center px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 transition text-sm sm:text-base font-semibold shadow-xl text-center animate-pulse-soft"
+              >
+                Рассчитать стоимость
+              </a>
+              <p class="text-xs sm:text-sm text-gray-300">
+                Без предоплаты. Выезд инженера и замер — бесплатно.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl xl:max-w-2xl text-xs sm:text-sm text-gray-200">
+              <div class="bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.12),inset_0_0_8px_rgba(255,255,255,0.08)] rounded-xl px-3 py-3 flex flex-col justify-center items-center sm:items-start text-center sm:text-left">
+                <p class="font-semibold text-sm sm:text-base mb-1">От 30 дней</p>
+                <p class="text-gray-300">Сдаём объекты точно в срок по договору.</p>
+              </div>
+              <div class="bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.12),inset_0_0_8px_rgba(255,255,255,0.08)] rounded-xl px-3 py-3 flex flex-col justify-center items-center sm:items-start text-center sm:text-left">
+                <p class="font-semibold text-sm sm:text-base mb-1">Фиксированная смета</p>
+                <p class="text-gray-300">Без скрытых работ и доплат.</p>
+              </div>
+              <div class="bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.12),inset_0_0_8px_rgba(255,255,255,0.08)] rounded-xl px-3 py-3 flex flex-col justify-center items-center sm:items-start text-center sm:text-left">
+                <p class="font-semibold text-sm sm:text-base mb-1">Под ключ</p>
+                <p class="text-gray-300">От черновых до мебели и декора.</p>
+              </div>
+            </div>
+          </div>
+
+            <div class="space-y-6 lg:space-y-8">
+            <!-- Блок "Пример расчёта стоимости" (акцентированный) -->
+            <div class="rounded-3xl bg-gray-900/40 border-2 border-orange-500/50 backdrop-blur-md p-6 sm:p-8 shadow-2xl shadow-orange-500/20 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/20 blur-2xl rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+              
+              <p class="text-sm font-medium text-orange-400 mb-4 flex items-center gap-2">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Пример расчёта стоимости
+              </p>
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4 mb-5 border-b border-white/10 pb-5">
+                <div>
+                  <p class="text-xs uppercase tracking-wide text-gray-400 mb-1">
+                    2-комнатная квартира, 62 м²
+                  </p>
+                  <p class="text-2xl sm:text-3xl font-bold text-white">
+                    от 8 500 ₽/м²
+                  </p>
+                </div>
+                <p class="text-xs sm:text-right text-gray-400 max-w-[140px]">
+                  Точная стоимость<br />после бесплатного выезда инженера.
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-4 text-xs text-gray-200">
+                <div class="flex items-start gap-2">
+                  <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  <p>Фиксация цены в договоре до окончания работ.</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  <p>Поэтапная оплата по факту выполненных работ.</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  <p>Профессиональные мастера с опытом от 5 лет.</p>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  <p>Гарантия на ремонт и инженерные сети — 3 года.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 text-xs text-gray-200">
+              <div class="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-4 py-4 relative overflow-hidden">
+                <p class="text-2xl font-bold text-white mb-1">150+</p>
+                <p class="text-gray-300">завершённых объектов за 5 лет.</p>
+              </div>
+              <div class="border border-white/10 rounded-2xl px-4 py-3">
+                <p class="text-2xl font-semibold mb-1">4.9</p>
+                <p class="text-gray-300">средняя оценка по отзывам клиентов.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================= -->
+  <!-- БЛОК 2: Тарифы                            -->
+  <!-- ========================================= -->
+  <section id="tariffs" class="bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <!-- Декоративные световые пятна и узоры -->
+    <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-40 pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-orange-200/80 blur-[180px] rounded-full pointer-events-none translate-x-1/4 -translate-y-1/4"></div>
+    <div class="absolute bottom-0 left-0 w-[700px] h-[700px] bg-indigo-100/60 blur-[160px] rounded-full pointer-events-none -translate-x-1/4 translate-y-1/4 z-0"></div>
+
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="max-w-2xl mb-10 sm:mb-14">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">
+          Понятные тарифы
+        </h2>
+        <p class="text-sm sm:text-base text-gray-600">
+          Подберём формат ремонта под ваши задачи и бюджет. Каждый тариф включает
+          прозрачную смету, прорабский контроль и поэтапную приёмку работ.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Тариф: Косметический -->
+        <article class="card-hover-glow flex flex-col h-full rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden text-left">
+          <div class="h-40 w-full overflow-hidden bg-gray-100 mb-4 rounded-t-3xl">
+            <img src="cosmetic.png" alt="Косметический ремонт" loading="lazy" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 sm:p-7 pt-0 flex-grow flex flex-col">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2">
+              Косметический
+            </h3>
+            <p class="text-sm text-gray-500 max-w-xs mb-4">Обновление интерьера без перепланировки.</p>
+            <p class="text-2xl sm:text-3xl font-semibold mb-2">от 4 500 ₽/м²</p>
+          <p class="text-xs text-gray-500 mb-5">Сроки: от 20 дней</p>
+          <ul class="mt-2 space-y-2.5 text-sm text-gray-700 flex-1">
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Покраска стен и потолков, оклейка обоев.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Замена напольных покрытий (ламинат, линолеум).
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Частичная замена сантехники и электрики.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Уборка и вынос строительного мусора.
+            </li>
+          </ul>
+          <div class="mt-6 pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-gray-500 gap-2">
+            <span>Идеален для освежения интерьера.</span>
+          </div>
+          </div>
+        </article>
+
+        <!-- Тариф: Капитальный (выделенный) -->
+        <article class="card-hover-glow relative flex flex-col h-full rounded-3xl border-2 border-orange-500/70 bg-white shadow-xl shadow-orange-100/50 overflow-hidden text-left">
+          <div class="absolute top-3 right-3 z-10">
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-orange-500 text-white text-[11px] font-semibold tracking-wide uppercase shadow-md">
+              Популярный выбор
+            </span>
+          </div>
+          <div class="h-40 w-full overflow-hidden bg-gray-100 mb-4 rounded-t-3xl">
+            <img src="capital.png" alt="Капитальный ремонт" loading="lazy" class="w-full h-full object-cover relative">
+            <div class="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/40 to-transparent"></div>
+          </div>
+          <div class="p-6 sm:p-7 pt-0 flex-grow flex flex-col">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2">
+              Капитальный
+            </h3>
+            <p class="text-sm text-gray-500 max-w-xs mb-4">Полное обновление с заменой коммуникаций.</p>
+            <p class="text-2xl sm:text-3xl font-semibold mb-2">от 7 500 ₽/м²</p>
+          <p class="text-xs text-gray-500 mb-5">Сроки: от 45 дней</p>
+          <ul class="mt-2 space-y-2.5 text-sm text-gray-700 flex-1">
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-orange-500"></span>
+              Демонтаж старых покрытий, выравнивание стен и полов.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-orange-500"></span>
+              Полная замена электрики и сантехники.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-orange-500"></span>
+              Укладка плитки, монтаж натяжных потолков.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-orange-500"></span>
+              Установка дверей, плинтусов, сантехнических приборов.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-orange-500"></span>
+              Черновые и чистовые материалы по согласованной смете.
+            </li>
+          </ul>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center sm:justify-between text-xs text-gray-500 gap-2">
+            <span>Оптимален для вторичного жилья и новостроек.</span>
+            <a href="#form" class="text-orange-600 font-medium hover:text-orange-700">
+              Узнать стоимость
+            </a>
+          </div>
+          </div>
+        </article>
+
+        <!-- Тариф: Дизайнерский -->
+        <article class="card-hover-glow flex flex-col h-full rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden text-left">
+          <div class="h-40 w-full overflow-hidden bg-gray-100 mb-4 rounded-t-3xl">
+            <img src="design.png" alt="Дизайнерский ремонт" loading="lazy" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 sm:p-7 pt-0 flex-grow flex flex-col">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2">
+              Дизайнерский
+            </h3>
+            <p class="text-sm text-gray-500 max-w-xs mb-4">
+              Индивидуальный проект с авторским сопровождением.
+            </p>
+            <p class="text-2xl sm:text-3xl font-semibold mb-2">от 10 500 ₽/м²</p>
+          <p class="text-xs text-gray-500 mb-5">Сроки: от 60 дней</p>
+          <ul class="mt-2 space-y-2.5 text-sm text-gray-700 flex-1">
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Разработка дизайн-проекта с 3D-визуализацией.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Сложные планировочные решения и перепланировка.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Премиальные отделочные материалы и инженерия.
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+              Комплектация мебелью, светом и текстилем.
+            </li>
+          </ul>
+          <div class="mt-6 pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-gray-500 gap-2">
+            <span>Для тех, кто ценит индивидуальные решения.</span>
+          </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================= -->
+  <!-- БЛОК 3: Этапы работы                      -->
+  <!-- ========================================= -->
+  <section id="steps" class="bg-gray-800 text-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <!-- Декоративные световые пятна -->
+    <div class="absolute top-1/2 left-1/4 w-[1000px] h-[500px] bg-orange-600/20 blur-[140px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2 z-0"></div>
+    <div class="absolute bottom-0 right-0 w-[800px] h-[400px] bg-blue-500/25 blur-[150px] rounded-full pointer-events-none translate-x-1/3 translate-y-1/3 z-0"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="max-w-2xl mb-10 sm:mb-14">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 text-white">
+          Как мы работаем
+        </h2>
+        <p class="text-sm sm:text-base text-gray-300">
+          От первого звонка до сдачи объекта вы понимаете, что происходит на каждом этапе.
+          Все процессы прозрачны и зафиксированы в договоре и смете.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <!-- Шаг 1 -->
+        <div class="relative bg-white/5 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-white/10 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] hover:-translate-y-2 transition-all duration-300 overflow-hidden group">
+          <div class="absolute -right-4 -top-8 text-[120px] font-black text-white/5 group-hover:text-orange-500/10 transition-colors pointer-events-none select-none z-0">1</div>
+          <div class="relative z-10">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/20 text-orange-400 mb-5 border border-orange-500/20">
+              <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2 text-white">Выезд инженера</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Бесплатный выезд в удобное время, замеры, фиксация задач.</p>
+          </div>
+        </div>
+
+        <!-- Шаг 2 -->
+        <div class="relative bg-white/5 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-white/10 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] hover:-translate-y-2 transition-all duration-300 overflow-hidden group">
+          <div class="absolute -right-4 -top-8 text-[120px] font-black text-white/5 group-hover:text-orange-500/10 transition-colors pointer-events-none select-none z-0">2</div>
+          <div class="relative z-10">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/20 text-orange-400 mb-5 border border-orange-500/20">
+              <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h3m3-10.5H9A2.25 2.25 0 0 0 6.75 7.75v8.5A2.25 2.25 0 0 0 9 18.5h6A2.25 2.25 0 0 0 17.25 16.25v-5.5L14 5.5Z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2 text-white">Прозрачная смета</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Детальная смета с расшифровкой работ и материалов. Договор.</p>
+          </div>
+        </div>
+
+        <!-- Шаг 3 -->
+        <div class="relative bg-white/5 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-white/10 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] hover:-translate-y-2 transition-all duration-300 overflow-hidden group">
+          <div class="absolute -right-4 -top-8 text-[120px] font-black text-white/5 group-hover:text-orange-500/10 transition-colors pointer-events-none select-none z-0">3</div>
+          <div class="relative z-10">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/20 text-orange-400 mb-5 border border-orange-500/20">
+              <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-4.5-9 4.5 9 4.5 9-4.5Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 12v9.75M3 9.75v6.75l9 4.5 9-4.5V9.75" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2 text-white">Закупка материалов</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Подбираем и закупаем материалы по бюджету. Предоставляем чеки.</p>
+          </div>
+        </div>
+
+        <!-- Шаг 4 -->
+        <div class="relative bg-white/5 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-white/10 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] hover:-translate-y-2 transition-all duration-300 overflow-hidden group">
+          <div class="absolute -right-4 -top-8 text-[120px] font-black text-white/5 group-hover:text-orange-500/10 transition-colors pointer-events-none select-none z-0">4</div>
+          <div class="relative z-10">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/20 text-orange-400 mb-5 border border-orange-500/20">
+              <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 3.75 1.5 1.5L9 7.5l1.5 1.5-3 3L6 10.5 3.75 12.75l1.5 1.5L3 16.5l1.5 1.5 1.5-1.5 1.5 1.5 3-3L9 13.5l2.25-2.25 1.5 1.5 2.25-2.25-1.5-1.5 2.25-2.25-1.5-1.5" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5 18.75 9.75M15 21l-3-3 4.5-4.5 3 3L15 21Z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2 text-white">Ремонтные работы</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Выполняем ремонт по графику, ведём регулярный фото- и видеоотчёт.</p>
+          </div>
+        </div>
+
+        <!-- Шаг 5 -->
+        <div class="relative bg-white/5 backdrop-blur-sm rounded-3xl p-6 shadow-sm border border-white/10 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] hover:-translate-y-2 transition-all duration-300 overflow-hidden group lg:col-span-1 sm:col-span-2">
+          <div class="absolute -right-4 -top-8 text-[120px] font-black text-white/5 group-hover:text-orange-500/10 transition-colors pointer-events-none select-none z-0">5</div>
+          <div class="relative z-10">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/20 text-orange-400 mb-5 border border-orange-500/20">
+              <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M12 2.25l2.122 1.349a3 3 0 0 0 2.383.342L19 3.25l.5 2.495a3 3 0 0 0 .87 1.676L22.5 9l-1.349 2.122a3 3 0 0 0-.342 2.383L21.75 17l-2.495.5a3 3 0 0 0-1.676.87L15 22.5l-2.122-1.349a3 3 0 0 0-2.383-.342L5 20.75l-.5-2.495a3 3 0 0 0-.87-1.676L1.5 15l1.349-2.122a3 3 0 0 0 .342-2.383L2.25 7l2.495-.5a3 3 0 0 0 1.676-.87L9 1.5l3 0Z" />
+              </svg>
+            </div>
+            <h3 class="text-base font-semibold mb-2 text-white">Сдача объекта</h3>
+            <p class="text-sm text-gray-400 leading-relaxed">Детальная приёмка, финальная уборка и передача гарантий на 3 года.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================= -->
+  <!-- БЛОК 4: Наши гарантии                     -->
+  <!-- ========================================= -->
+  <section id="guarantees" class="bg-white text-gray-900 py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <!-- Декоративные световые пятна и узоры -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] [background-size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none opacity-40"></div>
+    <div class="absolute top-1/3 right-0 w-[800px] h-[800px] bg-orange-200/60 blur-[160px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/2 z-0"></div>
+    <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-200/50 blur-[150px] rounded-full pointer-events-none -translate-x-1/3 translate-y-1/3 z-0"></div>
+
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="max-w-2xl mb-10 sm:mb-14">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">
+          Наши гарантии
+        </h2>
+        <p class="text-sm sm:text-base text-gray-600">
+          Мы оформляем отношения официально и отвечаем за результат. Все условия, сроки и
+          ответственность зафиксированы в договоре.
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Официальный договор -->
+        <div class="card-hover-glow rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 flex flex-col">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500 mb-5 border border-orange-100">
+            <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold mb-2">
+            Официальный договор
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Работает юрлицо, выдаём все закрывающие документы. В договоре прописаны этапы,
+            сроки и конечная стоимость ремонта.
+          </p>
+        </div>
+
+        <!-- Гарантия 3 года -->
+        <div class="card-hover-glow rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 flex flex-col">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500 mb-5 border border-orange-100">
+            <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold mb-2">
+            Гарантия 3 года
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Даём гарантию на отделочные работы и инженерные системы. В случае дефектов
+            мы устраняем их за свой счёт быстро и бесплатно.
+          </p>
+        </div>
+
+        <!-- Штрафы за просрочку -->
+        <div class="card-hover-glow rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 flex flex-col">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500 mb-5 border border-orange-100">
+            <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold mb-2">
+            Штрафы за просрочку
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Если нарушаем сроки по нашей вине — платим ощутимый штраф.
+            Вы застрахованы от затяжного ремонта и пустых обещаний.
+          </p>
+        </div>
+
+        <!-- Поэтапная оплата -->
+        <div class="card-hover-glow rounded-3xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 p-6 sm:p-7 flex flex-col">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-orange-500 mb-5 border border-orange-100">
+            <svg aria-hidden="true" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold mb-2">
+            Поэтапная оплата
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Мы не берём авансов. Вы оплачиваете только фактически выполненные работы
+            строго после приёмки каждого конкретного этапа.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================= -->
+  <!-- БЛОК 5: Примеры работ                     -->
+  <!-- ========================================= -->
+  <section id="projects" class="bg-gray-900 border-t border-white/10 text-gray-100 py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <!-- Декоративные световые пятна -->
+    <div class="absolute top-0 right-1/4 w-[800px] h-[600px] bg-orange-500/20 blur-[160px] rounded-full pointer-events-none z-0"></div>
+    <div class="absolute bottom-0 left-0 w-[800px] h-[600px] bg-blue-600/25 blur-[180px] rounded-full pointer-events-none -translate-x-1/3 z-0"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <div class="max-w-2xl text-center sm:text-left mx-auto sm:mx-0 mb-10 sm:mb-14">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 text-white">
+          Примеры работ
+        </h2>
+        <p class="text-sm sm:text-base text-gray-400">
+          Реализуем проекты под разные задачи — от компактных студий до просторных
+          многокомнатных квартир. Ниже несколько недавних объектов.
+        </p>
+      </div>
+
+      <div class="space-y-8 lg:space-y-10">
+        <!-- Карточка 1 -->
+        <article
+          class="card-hover-glow grid gap-6 lg:gap-8 lg:grid-cols-2 items-stretch rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 sm:p-6 lg:p-7 text-center sm:text-left"
+        >
+          <div class="overflow-hidden rounded-2xl bg-gray-200">
+            <img
+              src="bathroom.webp"
+              alt="Ванная комната под ключ"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg sm:text-xl font-semibold mb-4 text-white">
+                Современная ванная комната под ключ
+              </h3>
+              <dl class="space-y-4 text-sm text-gray-300 mb-6 text-left">
+                <div class="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-4">
+                  <dt class="text-gray-400 font-medium">Площадь:</dt>
+                  <dd>6 м²</dd>
+                </div>
+                <div class="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-4">
+                  <dt class="text-gray-400 font-medium">Задача:</dt>
+                  <dd>
+                    Полный демонтаж старой плитки, новая разводка труб, гидроизоляция, укладка керамогранита.
+                  </dd>
+                </div>
+                <div class="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-4">
+                  <dt class="text-gray-400 font-medium">Срок:</dt>
+                  <dd>2.5 недели</dd>
+                </div>
+                <div class="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-4">
+                  <dt class="text-gray-400 font-medium">Особенности:</dt>
+                  <dd>
+                    Скрытый люк под ванну, инсталляция подвесного унитаза, теплый пол с датчиком, светодиодная подсветка.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <p class="text-xs sm:text-sm text-orange-400/90 font-medium mt-2">
+              Клиент получил идеальную ванную с премиальной сантехникой и стильным дизайном.
+            </p>
+          </div>
+        </article>
+
+        <!-- Карточка 2 -->
+        <article
+          class="card-hover-glow grid gap-6 lg:gap-8 lg:grid-cols-2 items-stretch rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 sm:p-6 lg:p-7 text-center sm:text-left"
+        >
+          <div class="order-1 lg:order-none flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg sm:text-xl font-semibold mb-4 text-white">
+                Светлая и функциональная кухня
+              </h3>
+              <dl class="space-y-4 text-sm text-gray-300 mb-6 text-left">
+                <div class="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-4">
+                  <dt class="text-gray-400 font-medium">Площадь:</dt>
+                  <dd>18 м²</dd>
+                </div>
+                <div class="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-4">
+                  <dt class="text-gray-400 font-medium">Задача:</dt>
+                  <dd>
+                    Перепланировка с объединением лоджии, выравнивание стен под покраску, укладка плитки.
+                  </dd>
+                </div>
+                <div class="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-4">
+                  <dt class="text-gray-400 font-medium">Срок:</dt>
+                  <dd>1 месяц</dd>
+                </div>
+                <div class="grid grid-cols-[100px_1fr] sm:grid-cols-[120px_1fr] gap-4">
+                  <dt class="text-gray-400 font-medium">Особенности:</dt>
+                  <dd>
+                    Кухонный гарнитур на заказ со встроенной техникой, теплые полы на лоджии, продуманное зонирование освещения.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <p class="text-xs sm:text-sm text-orange-400/90 font-medium mt-2">
+              Просторная и эргономичная кухня-гостиная стала любимым местом для всей семьи.
+            </p>
+          </div>
+          <div class="overflow-hidden rounded-2xl bg-gray-200">
+            <img
+              src="kitchen.webp"
+              alt="Светлая и функциональная кухня"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================= -->
+  <!-- БЛОК 6: Подвал / Форма заявки             -->
+  <!-- ========================================= -->
+  <footer id="form" class="bg-gray-50 border-t border-gray-200 text-gray-900 relative overflow-hidden">
+    <!-- Декоративные световые пятна и узоры -->
+    <div class="absolute inset-0 bg-[radial-gradient(#d1d5db_1px,transparent_1px)] [background-size:20px_20px] opacity-60 pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-orange-300/40 blur-[150px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/4 z-0"></div>
+    <div class="absolute bottom-0 left-0 w-[700px] h-[700px] bg-violet-200/40 blur-[150px] rounded-full pointer-events-none -translate-x-1/4 translate-y-1/3 z-0"></div>
+
+    <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20 lg:py-24 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="text-center sm:text-left">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4 text-gray-900">
+            Готовы начать? <span class="text-orange-500">Давайте посчитаем!</span>
+          </h2>
+          <p class="text-sm sm:text-base text-gray-600 mb-8 max-w-xl mx-auto sm:mx-0">
+            Оставьте контакты — наш инженер свяжется с вами, уточнит детали и предложит несколько
+            вариантов сметы. Выезд на объект и консультация бесплатны.
+          </p>
+          <ul class="space-y-3 text-sm sm:text-base text-gray-700 inline-block text-left">
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 h-2 w-2 rounded-full bg-orange-500 shrink-0 shadow-sm shadow-orange-500/30"></span>
+              Фиксируем стоимость и сроки в договоре.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 h-2 w-2 rounded-full bg-orange-500 shrink-0 shadow-sm shadow-orange-500/30"></span>
+              Работаем без предоплаты — оплата по факту выполненных этапов.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 h-2 w-2 rounded-full bg-orange-500 shrink-0 shadow-sm shadow-orange-500/30"></span>
+              Берём на себя закупку и логистику материалов.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Форма заявки -->
+        <div class="bg-white border border-gray-200 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] p-6 sm:p-8 relative">
+          <form class="space-y-5">
+            <div>
+              <label for="name" class="block text-xs font-medium text-gray-600 mb-1.5 text-left">
+                Ваше имя
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                placeholder="Как к вам обращаться?"
+                class="w-full rounded-2xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+              />
+            </div>
+            <div>
+              <label for="phone" class="block text-xs font-medium text-gray-600 mb-1.5 text-left">
+                Телефон
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                placeholder="+7 (___) ___-__-__"
+                class="w-full rounded-2xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+              />
+            </div>
+            <div>
+              <label for="comment" class="block text-xs font-medium text-gray-600 mb-1.5 text-left">
+                Комментарий (необязательно)
+              </label>
+              <textarea
+                id="comment"
+                name="comment"
+                rows="3"
+                placeholder="Площадь квартиры, тип дома, ваши пожелания..."
+                class="w-full rounded-2xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition resize-none"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full inline-flex justify-center items-center px-6 py-3.5 rounded-2xl bg-orange-500 hover:bg-orange-600 text-sm sm:text-base font-semibold text-white shadow-lg shadow-orange-500/30 transition text-center"
+            >
+              Вызвать замерщика
+            </button>
+            <p class="text-[11px] leading-relaxed text-gray-500 text-center">
+              Нажимая на кнопку, вы соглашаетесь с обработкой персональных данных. Мы не передаём
+              контакты третьим лицам.
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <div class="mt-10 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-gray-500">
+        <div class="text-center sm:text-left">
+          <p>© 2026 «Премиум ремонт». Ремонт квартир под ключ в вашем городе.</p>
+          <p class="mt-1">Made by Rens Reneru.</p>
+        </div>
+        <p>ИНН 0000000000 · ОГРН 0000000000000</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно успешной отправки -->
+  <div
+    id="success-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+    <div
+      id="success-modal-content"
+      class="relative max-w-md w-full mx-4 rounded-3xl bg-white p-6 sm:p-8 shadow-2xl transform scale-95 translate-y-2 transition-transform duration-300"
+    >
+      <button
+        type="button"
+        id="success-modal-close"
+        class="absolute top-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition"
+        aria-label="Закрыть"
+      >
+        ✕
+      </button>
+      <h3 class="text-lg sm:text-xl font-semibold mb-2 text-gray-900">
+        Ваша заявка успешно принята!
+      </h3>
+      <p class="text-sm sm:text-base text-gray-600">
+        Мы перезвоним вам в ближайшее время.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('#form form');
+      const phoneInput = document.getElementById('phone');
+      const modal = document.getElementById('success-modal');
+      const modalContent = document.getElementById('success-modal-content');
+      const modalClose = document.getElementById('success-modal-close');
+
+      if (!form || !phoneInput || !modal || !modalContent || !modalClose) return;
+
+      function formatPhone(raw) {
+        // Оставляем только цифры и обрезаем до 10 (для маски +7 (***) ***-**-**)
+        let digits = raw.replace(/\D/g, '');
+        // Если пользователь сначала ввёл 7, игнорируем её (т.к. уже есть +7)
+        if (digits.startsWith('7')) {
+          digits = digits.slice(1);
+        }
+        digits = digits.slice(0, 10);
+
+        const pad = (value, length) => value.padEnd(length, '_');
+
+        const part1 = digits.slice(0, 3);
+        const part2 = digits.slice(3, 6);
+        const part3 = digits.slice(6, 8);
+        const part4 = digits.slice(8, 10);
+
+        const area = part1 ? pad(part1, 3) : '___';
+        const mid = part2 ? pad(part2, 3) : '___';
+        const tail1 = part3 ? pad(part3, 2) : '__';
+        const tail2 = part4 ? pad(part4, 2) : '__';
+
+        return `+7 (${area}) ${mid}-${tail1}-${tail2}`;
+      }
+
+      function getDigitsCount(raw) {
+        let digits = raw.replace(/\D/g, '');
+        if (digits.startsWith('7')) {
+          digits = digits.slice(1);
+        }
+        return digits.length;
+      }
+
+      // Инициализируем маску при фокусе
+      phoneInput.addEventListener('focus', function () {
+        if (!phoneInput.value.trim()) {
+          phoneInput.value = formatPhone('');
+          phoneInput.setSelectionRange(phoneInput.value.length, phoneInput.value.length);
+        }
+      });
+
+      // Маска ввода телефона
+      phoneInput.addEventListener('input', function () {
+        const formatted = formatPhone(phoneInput.value);
+        phoneInput.value = formatted;
+        phoneInput.classList.remove('ring-2', 'ring-red-500', 'border-red-500');
+      });
+
+      // Запрещаем ввод букв напрямую с клавиатуры
+      phoneInput.addEventListener('keydown', function (e) {
+        const allowedKeys = [
+          'Backspace',
+          'Delete',
+          'ArrowLeft',
+          'ArrowRight',
+          'Tab',
+          'Home',
+          'End',
+        ];
+
+        if (allowedKeys.includes(e.key)) return;
+
+        // Разрешаем только цифры
+        if (!/^\d$/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+
+      function isPhoneValid() {
+        return getDigitsCount(phoneInput.value) === 10; // строго 10 цифр по маске +7 (***) ***-**-**
+      }
+
+      function openModal() {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100', 'pointer-events-auto');
+        modalContent.classList.remove('scale-95', 'translate-y-2');
+        modalContent.classList.add('scale-100', 'translate-y-0');
+      }
+
+      function closeModal() {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        modalContent.classList.add('scale-95', 'translate-y-2');
+        modalContent.classList.remove('scale-100', 'translate-y-0');
+      }
+
+      modalClose.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (!isPhoneValid()) {
+          phoneInput.classList.add('ring-2', 'ring-red-500', 'border-red-500');
+          phoneInput.focus();
+          return;
+        }
+
+        // Сбрасываем форму и маску
+        form.reset();
+        phoneInput.value = '';
+        phoneInput.dispatchEvent(new Event('input'));
+
+        openModal();
+      });
+    });
+  </script>
+</body>
+</html>
